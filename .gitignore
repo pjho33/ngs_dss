@@ -1,0 +1,26 @@
+# NGS raw / processed data
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bai
+*.sam
+*.vcf
+*.bed
+
+# R / Python cache
+.Rhistory
+.RData
+__pycache__/
+*.pyc
+
+# DSS / bsseq outputs
+*.rds
+*.RDS
+*.pdf
+*.png
+
+# temp
+tmp/
+logs/

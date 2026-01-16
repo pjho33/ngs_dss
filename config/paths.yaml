@@ -1,0 +1,3 @@
+fastq_dir: "data/fastq251222"
+reference_genome: "/home/pjho3/projects/ngs_dss/data/reference/hg38.fa"
+output_dir: "/media/pjho3/E/results"
