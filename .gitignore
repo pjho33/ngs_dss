@@ -24,3 +24,7 @@ __pycache__/
 # temp
 tmp/
 logs/
+
+# ---- NGS large data (do not commit) ----
+data/
+results*/
