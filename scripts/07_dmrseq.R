@@ -45,9 +45,10 @@ logit <- function(...) cat("[", format(Sys.time(), "%H:%M:%S"), "] ", ..., "\n",
 # ------------------------------------------------------------------------------
 # 2. Validation
 # ------------------------------------------------------------------------------
-logit("=== dmrseq Analysis Pipeline (HDF5 Mode) ===")
+logit("=== dmrseq Analysis Pipeline ===")
 
-if(!file.exists(h5_file)) stop("se.h5 not found! Run 06_import_bsseq.R first.")
+bs_file <- file.path(H5_DIR, "bsseq.rds")
+if(!file.exists(bs_file)) stop("bsseq.rds not found! Run 06_import_bsseq.R first.")
 
 if(!dir.exists(OUT_DIR)) dir.create(OUT_DIR, recursive = TRUE)
 
