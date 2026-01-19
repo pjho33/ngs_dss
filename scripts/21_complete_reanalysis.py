@@ -23,6 +23,8 @@ RESULTS_DIR = BASE_DIR / "results"
 OUTPUT_DIR = RESULTS_DIR / "complete_reanalysis"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
+CLINICAL_FILE = DATA_DIR / "환자군과 대조군260117.xlsx"
+
 plt.style.use('seaborn-v0_8-whitegrid')
 sns.set_palette("Set2")
 plt.rcParams['figure.dpi'] = 300
@@ -37,9 +39,13 @@ print("=" * 80)
 print("\n[STEP 1] Loading and integrating all data...")
 print("-" * 80)
 
-# Load clinical data
-patients_clinical = pd.read_excel(DATA_DIR / "환자군과 대조군260117.xlsx", sheet_name='환자군')
-controls_clinical = pd.read_excel(DATA_DIR / "환자군과 대조군260117.xlsx", sheet_name='대조군')
+# Load clinical data from Excel
+patients_clinical = pd.read_excel(CLINICAL_FILE, sheet_name='환자군')
+controls_clinical = pd.read_excel(CLINICAL_FILE, sheet_name='대조군')
+
+# Standardize column names
+if 'ca19-9' in controls_clinical.columns:
+    controls_clinical.rename(columns={'ca19-9': 'CA 19-9'}, inplace=True)
 
 print(f"Clinical data loaded:")
 print(f"  Patients: {len(patients_clinical)} (CA19-9: {(~patients_clinical['CA 19-9'].isna()).sum()})")
